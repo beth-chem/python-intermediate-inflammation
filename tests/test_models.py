@@ -5,12 +5,10 @@ import numpy.testing as npt
 import pytest
 
 @pytest.mark.parametrize(
-    "test, expected"
-    [
-       ([[0, 0],[0, 0],[0, 0]],[0,0]) 
-       ([[1, 2],[3, 4],[5, 6]],[3,4]) 
-    ]
-) 
+    "test, expected", [
+([[0, 0],[0, 0],[0, 0]], [0, 0]),
+([[1, 2],[3, 4],[5, 6]], [5, 6])]
+)
 def test_daily_mean_zeros(test, expexted):
     """Test that mean function works for an array of zeros."""
     from inflammation.models import daily_mean
@@ -44,10 +42,16 @@ def test_daily_min(test, expected):
     from inflammation.models import daily_min
 
     npt.assert_array_equal(daily_min(test), expected)
-    
+
 def test_daily_min_string():
     """Test that mean function works for an array of zeros."""
     from inflammation.models import daily_min
 
     with pytest.raises(TypeError):
         error_expected = daily_min(['abd', 'ads'], ['aff','gfy'])
+
+
+
+
+
+
